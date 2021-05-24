@@ -17,8 +17,60 @@
       "avatar": "http",
       "createdAt": 1621706451208,
       "id": "HSAjdkk8Rikx-XNfHvaoN"
+    },
+    {
+      "email": "emial@test.com",
+      "password": "123456",
+      "role": "ADMIN",
+      "verified": false,
+      "avatar": "http",
+      "createdAt": 1621882563106,
+      "id": "WPjRkDdi-2hnvdWR0jck5"
     }
   ],
-  "posts": [],
+  "posts": [
+    {
+      "message": "THIS IS BEST POST.",
+      "author": "WPjRkDdi-2hnvdWR0jck5",
+      "createdAt": 1621882717465,
+      "id": "1RiP5mQP9z2IE5YjIWvle"
+    },
+    {
+      "message": "THIS IS BEST POST.",
+      "author": "WPjRkDdi-2hnvdWR0jck5",
+      "createdAt": 1621882757370,
+      "id": "4n86nPKLQEE5RpiRhTpfb"
+    },
+    {
+      "message": "THIS IS BEST POST.",
+      "author": "WPjRkDdi-2hnvdWR0jck5",
+      "createdAt": 1621882758380,
+      "id": "l9Uu5ORItrueS-I-3OqlX"
+    },
+    {
+      "message": "THIS IS BEST POST.",
+      "author": "WPjRkDdi-2hnvdWR0jck5",
+      "createdAt": 1621882758779,
+      "id": "Fn4C1Bhjv66BUeCPLi9aW"
+    },
+    {
+      "message": "THIS IS BEST POST.",
+      "author": "WPjRkDdi-2hnvdWR0jck5",
+      "createdAt": 1621882759041,
+      "id": "SBSiq8pezR2cCTliGihK8"
+    },
+    {
+      "message": "THIS IS BEST POST.",
+      "author": "WPjRkDdi-2hnvdWR0jck5",
+      "createdAt": 1621882759226,
+      "id": "761lL8ktLrq1LyhssZx7i"
+    },
+    {
+      "message": "THIS IS BEST POST.",
+      "author": "WPjRkDdi-2hnvdWR0jck5",
+      "createdAt": 1621882759383,
+      "id": "UVCVK95hlA10mDYAspbc4"
+    }
+  ],
   "settings": []
 }
