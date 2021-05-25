@@ -51,7 +51,7 @@ module.exports = {
       const existing = models.User.findOne({email: input.email})
 
       if (existing) {
-        throw new Error('nope')  
+        throw new AuthenticationError('nope')  
       }
       const user = models.User.createOne({...input, verified: false, avatar: 'http'})
       const token = createToken(user)
@@ -61,7 +61,7 @@ module.exports = {
       const user = models.User.findOne(input)
 
       if (!user) {
-        throw new Error('nope')  
+        throw new AuthenticationError('nope')  
       }
 
       const token = createToken(user)
@@ -71,7 +71,7 @@ module.exports = {
   User: {
     posts(root, _, {user, models}) {
       if (root.id !== user.id) {
-        throw new Error('nope')
+        throw new AuthenticationError('nope')
       }
 
       return models.Post.findMany({author: root.id})
