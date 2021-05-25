@@ -1,9 +1,10 @@
-const { ApolloServer } = require('apollo-server') 
+const { ApolloServer, AuthenticationError, UserInputError, ApolloError } = require('apollo-server') 
 const gql = require('graphql-tag')
 
 const typeDefs = gql`
   type User {
     id: ID!
+    error: String
     username: String!
     createdAt: Int!
   }
@@ -57,7 +58,12 @@ const resolvers = {
         createdAt: 238741230
       }
     }
-  }
+  },
+  User: {
+    error: () => {
+      throw new AuthenticationError('Not authenticated.')
+    }
+  },
 }
 
 const server = new ApolloServer({

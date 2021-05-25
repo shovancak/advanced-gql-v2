@@ -1,4 +1,4 @@
-const { PubSub } = require('apollo-server')
+const { PubSub, AuthenticationError } = require('apollo-server')
 const {authenticated, authorized} = require('./auth')
 
 const NEW_POST = 'NEW_POST'
