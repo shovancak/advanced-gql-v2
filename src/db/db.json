@@ -26,6 +26,15 @@
       "avatar": "http",
       "createdAt": 1621882563106,
       "id": "WPjRkDdi-2hnvdWR0jck5"
+    },
+    {
+      "email": "emial@test2.com",
+      "password": "12345d6",
+      "role": "ADMIN",
+      "verified": false,
+      "avatar": "http",
+      "createdAt": 1622055489571,
+      "id": "gU-0NLYBMbEv_-xBk07XH"
     }
   ],
   "posts": [
