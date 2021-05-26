@@ -5,18 +5,21 @@ const { defaultFieldResolver } = require('graphql')
 class LogDirective extends SchemaDirectiveVisitor {
   visitFieldDefinition(field) {
     const resolver = field.resolve || defaultFieldResolver
+    const { message } = this.args
     field.resolve = (args) => {
       console.log('log directive')
+      console.log(message)
       return resolver.apply(this, args)
     }
   }
+
 }
 
 const typeDefs = gql`
-  directive @log on FIELD_DEFINITION
+  directive @log(message: String = "message from directive") on FIELD_DEFINITION
 
   type User {
-    id: ID! @log
+    id: ID! @log(message: "id here")
     error: String
     username: String!
     createdAt: Int!
