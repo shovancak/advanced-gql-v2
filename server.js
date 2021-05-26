@@ -1,9 +1,22 @@
-const { ApolloServer, AuthenticationError, UserInputError, ApolloError } = require('apollo-server') 
+const { ApolloServer, AuthenticationError, UserInputError, ApolloError, SchemaDirectiveVisitor } = require('apollo-server') 
 const gql = require('graphql-tag')
+const { defaultFieldResolver } = require('graphql')
+
+class LogDirective extends SchemaDirectiveVisitor {
+  visitFieldDefinition(field) {
+    const resolver = field.resolve || defaultFieldResolver
+    field.resolve = (args) => {
+      console.log('log directive')
+      return resolver.apply(this, args)
+    }
+  }
+}
 
 const typeDefs = gql`
+  directive @log on FIELD_DEFINITION
+
   type User {
-    id: ID!
+    id: ID! @log
     error: String
     username: String!
     createdAt: Int!
@@ -69,6 +82,9 @@ const resolvers = {
 const server = new ApolloServer({
   resolvers,
   typeDefs,
+  schemaDirectives: {
+    log: LogDirective,
+  }
 })
 
 server.listen().then(({ url }) => {
