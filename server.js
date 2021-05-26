@@ -1,15 +1,21 @@
 const { ApolloServer, AuthenticationError, UserInputError, ApolloError, SchemaDirectiveVisitor } = require('apollo-server') 
 const gql = require('graphql-tag')
-const { defaultFieldResolver } = require('graphql')
+const { defaultFieldResolver, GraphQLString } = require('graphql')
 
 class LogDirective extends SchemaDirectiveVisitor {
   visitFieldDefinition(field) {
     const resolver = field.resolve || defaultFieldResolver
-    const { message } = this.args
-    field.resolve = (args) => {
+
+    field.args.push({
+      type: GraphQLString,
+      name: 'message'
+    })
+
+    field.resolve = (root, { message, ...rest }, ctx, info) => {
+      const { message: schemaMessage } = this.args
       console.log('log directive')
-      console.log(message)
-      return resolver.apply(this, args)
+      console.log(message ?? schemaMessage)
+      return resolver.call(this, root, rest, ctx, info)
     }
   }
 
